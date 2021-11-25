@@ -36,6 +36,7 @@ const [name, setName] = useState()
             height={screenH * 0.27}
             setArrayImages={damagePhotos} 
           />
+          
       </View>
     </Wrapper>
   );
