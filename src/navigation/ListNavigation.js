@@ -4,14 +4,14 @@ import Details from '../screens/Details';
 import List from '../screens/List'
 
 
-const Stack = createNativeStackNavigator();
+const StackList = createNativeStackNavigator();
 
 const ListNavigation = () => {
   return (
-        <Stack.Navigator screenOptions={{headerShown: false}} initialRouteName={"Listado"}>
-            <Stack.Screen name={"Listado"}  component={List}/>
-            <Stack.Screen name={"Detalle"}  component={Details}/>
-        </Stack.Navigator>
+        <StackList.Navigator screenOptions={{headerShown: false}} initialRouteName={"Listado"}>
+            <StackList.Screen name={"Listado"}  component={List}/>
+            <StackList.Screen name={"Detalle"}  component={Details}/>
+        </StackList.Navigator>
   );
 }
 
