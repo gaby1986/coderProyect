@@ -1,10 +1,11 @@
 import React, {useState} from "react"
 import { View, FlatList, TouchableOpacity ,StyleSheet, Text, Button, TextInput} from "react-native"
 import { useNavigation } from "@react-navigation/core"
- 
+import { useSelector, useDispatch } from 'react-redux';
+import { SelectItem } from '../../store/actions/List.actions';
 
 const MyList = (props) => {
-
+	const dispatch = useDispatch();
 	const { arrayImages, width, height, onGetUnit } = props
 	const navigation = useNavigation()
 	const [textValue, setTextValue] = useState("")
@@ -14,8 +15,7 @@ const MyList = (props) => {
 	const handleModal = (imgData) => {
 		setModalImg(imgData)
 		setVisible(true)
-	}
-	
+	}	
 	const handleChangeText = (value) => {
 		setTextValue(value)
 	}
@@ -33,9 +33,11 @@ const MyList = (props) => {
 	 	setThelist(filteredImgs)
 	}
 	const onGoDetail = (item) => {
+		
+		dispatch(SelectItem(item.id))
 		navigation.navigate("Detalle",{
 			name: item.title,
-			idProduct: item.id,
+			idProduct: item.id, //Pasar el id es mas para uso global es mejo usar dispatch
 			description: item.description,
 		});
 	}
